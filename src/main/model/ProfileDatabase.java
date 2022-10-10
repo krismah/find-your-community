@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 // Represents all profiles that exist
@@ -23,12 +24,16 @@ public class ProfileDatabase implements ProfileOperations {
     }
 
     @Override
-    public ArrayList<Profile> sortProfileByFaculty(String faculty) {
+    public HashSet<Profile> sortProfileByFaculty(String faculty) {
         return null; // stub
     }
 
     @Override
-    public ArrayList<Profile> sortProfileByRoute(int route) {
+    public HashSet<Profile> sortProfileByRoute(int route) {
+        return null; // stub
+    }
+
+    public HashSet<Profile> getSet() {
         return null; // stub
     }
 }

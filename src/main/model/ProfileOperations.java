@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 // Represents operations that can be performed on collections containing profiles
@@ -17,9 +18,9 @@ public interface ProfileOperations {
     void removeProfile(Profile profile);
 
     // EFFECTS: creates a new sorted list of profiles based on faculty
-    ArrayList<Profile> sortProfileByFaculty(String faculty);
+    Collection<Profile> sortProfileByFaculty(String faculty);
 
 
     // EFFECTS: creates a new sorted list of profiles based on route
-    ArrayList<Profile> sortProfileByRoute(int route);
+    Collection<Profile> sortProfileByRoute(int route);
 }
