@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents all profiles that exist
 public class ProfileDatabase implements ProfileOperations {
 
@@ -20,7 +23,12 @@ public class ProfileDatabase implements ProfileOperations {
     }
 
     @Override
-    public void sortProfile(String category) {
+    public ArrayList<Profile> sortProfileByFaculty(String faculty) {
+        return null; // stub
+    }
 
+    @Override
+    public ArrayList<Profile> sortProfileByRoute(int route) {
+        return null; // stub
     }
 }

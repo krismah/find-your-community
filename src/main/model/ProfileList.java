@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents a list of profiles
 public class ProfileList implements ProfileOperations {
 
@@ -19,7 +22,15 @@ public class ProfileList implements ProfileOperations {
     }
 
     @Override
-    public void sortProfile(String category) {
+    public ArrayList<Profile> sortProfileByFaculty(String faculty) {
+        return null; //stub
+    }
 
+    public ArrayList<Profile> sortProfileByRoute(int route) {
+        return null; // stub
+    }
+
+    public ArrayList<Profile> getList() {
+        return null; // stub
     }
 }

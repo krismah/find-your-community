@@ -1,17 +1,25 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents operations that can be performed on collections containing profiles
 public interface ProfileOperations {
 
+    // REQUIRES: profile cannot already exist in this
     // MODIFIES: this
     // EFFECTS: adds a given profile
     void addProfile(Profile profile);
 
+    // REQUIRES: profile must exist in this
     // MODIFIES: this
     // EFFECTS: removes a profile
     void removeProfile(Profile profile);
 
-    // MODIFIES: this
-    // EFFECTS: sorts profiles based on a given category
-    void sortProfile(String category);
+    // EFFECTS: creates a new sorted list of profiles based on faculty
+    ArrayList<Profile> sortProfileByFaculty(String faculty);
+
+
+    // EFFECTS: creates a new sorted list of profiles based on route
+    ArrayList<Profile> sortProfileByRoute(int route);
 }
