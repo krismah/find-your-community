@@ -49,13 +49,9 @@ public class ProfileApp {
         if (command.equals("c")) {
             createUserProfile();
         } else if (command.equals("l")) {
-            viewListOfProfiles(userList);
+            viewProfilesMenu(userList);
         } else if (command.equals("d")) {
-            viewListOfProfiles(database);
-        } else if (command.equals("ap")) {
-            profileListActions();
-        } else if (command.equals("ad")) {
-            profileDatabaseActions();
+            viewProfilesMenu(database);
         } else {
             System.out.println("Invalid selection.");
         }
@@ -89,7 +85,7 @@ public class ProfileApp {
     private void displayMenu() {
         System.out.println("\nWelcome! Select from one of the following options:");
         System.out.println("\tc : Create Your Profile");
-        System.out.println("\tl : View Your List of Profiles");
+        System.out.println("\tl : View Your Personal List of Profiles");
         System.out.println("\td : View All Profiles");
         System.out.println("\tq : Quit Application");
     }
@@ -100,7 +96,7 @@ public class ProfileApp {
             System.out.println("What is your name?");
             String name = input.next();
 
-            System.out.println("What faculty are you in?");
+            System.out.println("What faculty are you in? Select a number:");
             printFaculties();
             int facultyNumber = input.nextInt();
             String faculty = faculties.get(facultyNumber - 1);
@@ -137,37 +133,55 @@ public class ProfileApp {
 
     }
 
-    // EFFECTS: shows a list of profiles
+    // EFFECTS: prints a given list of profiles
     private void viewListOfProfiles(ProfileList profileList) {
-        if (profileList.getList().size() == 0) {
+        if (profileList.getList().size() > 0) {
+            for (int i = 1; i <= profileList.getList().size(); i++) {
+                System.out.println("PROFILE " + i + ":");
+                System.out.println("\tName: " + profileList.getList().get(i - 1).getName());
+                System.out.println("\tFaculty: " + profileList.getList().get(i - 1).getFaculty());
+                System.out.println("\tRoute: " + profileList.getList().get(i - 1).getRoute());
+                System.out.println("\tMessage: " + profileList.getList().get(i - 1).getMessage());
+            }
+        } else {
             System.out.println("There are no profiles!");
         }
-        for (int i = 1; i <= profileList.getList().size(); i++) {
-            System.out.println("PROFILE " + i + ":");
-            System.out.println("\tName: " + profileList.getList().get(i - 1).getName());
-            System.out.println("\tFaculty: " + profileList.getList().get(i - 1).getFaculty());
-            System.out.println("\tRoute: " + profileList.getList().get(i - 1).getRoute());
-            System.out.println("\tMessage: " + profileList.getList().get(i - 1).getMessage());
-        }
-        if (profileList == userList) {
-            System.out.println("ap: remove a profile from the list OR sort the list by commute route or faculty.");
-        } else if (profileList == database) {
-            System.out.println("ad: add a profile to your list OR sort the list by commute route or faculty.");
-        }
+    }
 
+    // EFFECTS: shows user a given list and prompts to make an action to either sort or add/remove
+    private void viewProfilesMenu(ProfileList profileList) {
+        viewListOfProfiles(profileList);
+
+        if (profileList == database) {
+            System.out.println("act : add a profile to your list OR sort the list by commute route or faculty.");
+            System.out.println("Press any key to return to the main menu.");
+            String choice = input.next();
+            choice = choice.toLowerCase();
+            if (choice.equals("act")) {
+                profileDatabaseActions();
+            }
+        } else if (profileList == userList) {
+            System.out.println("act : remove a profile from the list OR sort the list by commute route or faculty.");
+            System.out.println("Press any key to return to the main menu.");
+            String choice = input.next();
+            choice = choice.toLowerCase();
+            if (choice.equals("act")) {
+                profileListActions();
+            }
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: sorts the list by faculty or commute route OR removes a profile from the list
     private void profileListActions() {
         System.out.println("Select an action:");
-        System.out.println("s: Sort by Faculty or Commute Route");
-        System.out.println("r: Remove a Profile");
+        System.out.println("\ts : Sort by Faculty or Commute Route");
+        System.out.println("\tr : Remove a Profile");
 
         String choice = input.next();
         if (choice.equals("s")) {
-            System.out.println("f: Faculty");
-            System.out.println("r: Commute Route");
+            System.out.println("f : Faculty");
+            System.out.println("r : Commute Route");
             choice = input.next();
             if (choice.equals("f")) {
                 System.out.println("Enter a faculty:");
@@ -181,6 +195,7 @@ public class ProfileApp {
             System.out.println("Enter which profile number you would like to remove:");
             viewListOfProfiles(userList);
             userList.removeProfile(userList.getList().get(input.nextInt() - 1));
+            System.out.println("Profile removed!");
         }
     }
 
@@ -188,13 +203,13 @@ public class ProfileApp {
     // EFFECTS: sorts the list by faculty or commute route OR adds a profile to user's list from database
     private void profileDatabaseActions() {
         System.out.println("Select an action:");
-        System.out.println("s: Sort by Faculty or Commute Route");
-        System.out.println("a: Add a Profile to Your List");
+        System.out.println("\ts : Sort by Faculty or Commute Route");
+        System.out.println("\ta : Add a Profile to Your List");
 
         String choice = input.next();
         if (choice.equals("s")) {
-            System.out.println("f: Faculty");
-            System.out.println("r: Commute Route");
+            System.out.println("f : Faculty");
+            System.out.println("r : Commute Route");
             choice = input.next();
             if (choice.equals("f")) {
                 System.out.println("Enter a faculty:");
@@ -208,6 +223,7 @@ public class ProfileApp {
             System.out.println("Enter the profile number you would like to add:");
             viewListOfProfiles(database);
             userList.addProfile(database.getList().get(input.nextInt() - 1));
+            System.out.println("Profile added!");
         }
     }
 
@@ -215,12 +231,14 @@ public class ProfileApp {
     private void printProfiles(List<Profile> profiles) {
         for (int i = 1; i <= profiles.size(); i++) {
             System.out.println("PROFILE " + i);
-            System.out.println("Name: " + profiles.get(i - 1).getName());
-            System.out.println("Faculty: " + profiles.get(i - 1).getFaculty());
-            System.out.println("Route: " + profiles.get(i - 1).getRoute());
-            System.out.println("Message: " + profiles.get(i - 1).getMessage());
+            System.out.println("\tName: " + profiles.get(i - 1).getName());
+            System.out.println("\tFaculty: " + profiles.get(i - 1).getFaculty());
+            System.out.println("\tRoute: " + profiles.get(i - 1).getRoute());
+            System.out.println("\tMessage: " + profiles.get(i - 1).getMessage());
         }
     }
+
+
 
 
 }
