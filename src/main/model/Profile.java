@@ -31,20 +31,4 @@ public class Profile {
         return message;
     }
 
-    public void setName(String newName) {
-       name = newName;
-    }
-
-    public void setFaculty(String newFaculty) {
-        faculty = newFaculty;
-    }
-
-    public void setRoute(int newRoute) {
-        route = newRoute;
-    }
-
-    public void setMessage(String newMessage) {
-        message = newMessage;
-    }
-
 }
