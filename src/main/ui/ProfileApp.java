@@ -1,18 +1,17 @@
 package ui;
 
 import model.Profile;
-import model.ProfileDatabase;
 import model.ProfileList;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Profile application
+// Profile application (inspired by TellerApp)
 public class ProfileApp {
     private Profile user;
     private ProfileList userList;
-    private ProfileDatabase database;
+    private ProfileList database;
     private Scanner input;
     private boolean profileCreated;
     private List<String> faculties;
@@ -44,17 +43,19 @@ public class ProfileApp {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user commands
     private void processCommand(String command) {
         if (command.equals("c")) {
             createUserProfile();
         } else if (command.equals("l")) {
-            viewListOfProfiles();
+            viewListOfProfiles(userList);
         } else if (command.equals("d")) {
-            viewProfileDatabase();
+            viewListOfProfiles(database);
         } else if (command.equals("ap")) {
             profileListActions();
-        } else if (command.equals("fd") || command.equals("rd")) {
-            sortProfileDatabase();
+        } else if (command.equals("ad")) {
+            profileDatabaseActions();
         } else {
             System.out.println("Invalid selection.");
         }
@@ -66,7 +67,7 @@ public class ProfileApp {
         Profile sampleUser1 = new Profile("Tim", "Land and Food Systems", 99, "Hello!");
         Profile sampleUser2 = new Profile("Karen", "Science", 33, "I love bacteria!");
         Profile sampleUser3 = new Profile("Nathan", "Arts", 49, "Howdy!");
-        database = new ProfileDatabase();
+        database = new ProfileList();
         database.addProfile(sampleUser1);
         database.addProfile(sampleUser2);
         database.addProfile(sampleUser3);
@@ -93,6 +94,7 @@ public class ProfileApp {
         System.out.println("\tq : Quit Application");
     }
 
+    // EFFECTS: creates a user's profile
     private void createUserProfile() {
         if (!profileCreated) {
             System.out.println("What is your name?");
@@ -135,27 +137,24 @@ public class ProfileApp {
 
     }
 
-    // EFFECTS: shows user their list of profiles
-    private void viewListOfProfiles() {
-        for (int i = 1; i <= userList.getList().size(); i++) {
-            System.out.println("PROFILE " + i + ":");
-            System.out.println("\tName: " + userList.getList().get(i - 1).getName());
-            System.out.println("\tFaculty: " + userList.getList().get(i - 1).getFaculty());
-            System.out.println("\tRoute: " + userList.getList().get(i - 1).getRoute());
-            System.out.println("\tMessage: " + userList.getList().get(i - 1).getMessage());
+    // EFFECTS: shows a list of profiles
+    private void viewListOfProfiles(ProfileList profileList) {
+        if (profileList.getList().size() == 0) {
+            System.out.println("There are no profiles!");
         }
-        System.out.println("ap: remove a profile from the list OR sort the list by commute route or faculty.");
-    }
+        for (int i = 1; i <= profileList.getList().size(); i++) {
+            System.out.println("PROFILE " + i + ":");
+            System.out.println("\tName: " + profileList.getList().get(i - 1).getName());
+            System.out.println("\tFaculty: " + profileList.getList().get(i - 1).getFaculty());
+            System.out.println("\tRoute: " + profileList.getList().get(i - 1).getRoute());
+            System.out.println("\tMessage: " + profileList.getList().get(i - 1).getMessage());
+        }
+        if (profileList == userList) {
+            System.out.println("ap: remove a profile from the list OR sort the list by commute route or faculty.");
+        } else if (profileList == database) {
+            System.out.println("ad: add a profile to your list OR sort the list by commute route or faculty.");
+        }
 
-    // EFFECTS: shows user the complete database of all profiles
-    private void viewProfileDatabase() {
-        for (int i = 1; i <= database.getSet().size(); i++) {
-            System.out.println("PROFILE " + i + ":");
-            System.out.println("\tName: " + user.getName());
-            System.out.println("\tName: " + user.getFaculty());
-            System.out.println("\tName: " + user.getRoute());
-            System.out.println("\tName: " + user.getMessage());
-        }
     }
 
     // MODIFIES: this
@@ -177,16 +176,35 @@ public class ProfileApp {
                 userList.sortProfileByRoute(input.nextInt() - 1);
             }
         } else if (choice.equals("r")) {
-            System.out.println("Select a profile to remove:");
-            viewListOfProfiles();
+            System.out.println("Enter which profile number you would like to remove:");
+            viewListOfProfiles(userList);
             userList.removeProfile(userList.getList().get(input.nextInt() - 1));
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: sorts the list by faculty or commute route OR adds a profile to user's list from database
+    private void profileDatabaseActions() {
+        System.out.println("Select an action:");
+        System.out.println("s: Sort by Faculty or Commute Route");
+        System.out.println("a: Add a Profile to Your List");
 
-
-
-    private void sortProfileDatabase() {
+        String choice = input.next();
+        if (choice.equals("s")) {
+            System.out.println("f: Faculty");
+            System.out.println("r: Commute Route");
+            choice = input.next();
+            if (choice.equals("f")) {
+                printFaculties();
+                database.sortProfileByFaculty(faculties.get(input.nextInt() - 1));
+            } else if (choice.equals("r")) {
+                database.sortProfileByRoute(input.nextInt());
+            }
+        } else if (choice.equals("a")) {
+            System.out.println("Enter the profile number you would like to add:");
+            viewListOfProfiles(database);
+            userList.addProfile(database.getList().get(input.nextInt() - 1));
+        }
     }
 
 
