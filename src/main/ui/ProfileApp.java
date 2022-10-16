@@ -170,10 +170,12 @@ public class ProfileApp {
             System.out.println("r: Commute Route");
             choice = input.next();
             if (choice.equals("f")) {
+                System.out.println("Enter a faculty:");
                 printFaculties();
-                userList.sortProfileByFaculty(faculties.get(input.nextInt() - 1));
+                printProfiles(userList.sortProfileByFaculty(faculties.get(input.nextInt() - 1)));
             } else if (choice.equals("r")) {
-                userList.sortProfileByRoute(input.nextInt() - 1);
+                System.out.println("Enter a bus route:");
+                printProfiles(userList.sortProfileByRoute(input.nextInt() - 1));
             }
         } else if (choice.equals("r")) {
             System.out.println("Enter which profile number you would like to remove:");
@@ -195,15 +197,28 @@ public class ProfileApp {
             System.out.println("r: Commute Route");
             choice = input.next();
             if (choice.equals("f")) {
+                System.out.println("Enter a faculty:");
                 printFaculties();
-                database.sortProfileByFaculty(faculties.get(input.nextInt() - 1));
+                printProfiles(database.sortProfileByFaculty(faculties.get(input.nextInt() - 1)));
             } else if (choice.equals("r")) {
-                database.sortProfileByRoute(input.nextInt());
+                System.out.println("Enter a bus route:");
+                printProfiles(database.sortProfileByRoute(input.nextInt()));
             }
         } else if (choice.equals("a")) {
             System.out.println("Enter the profile number you would like to add:");
             viewListOfProfiles(database);
             userList.addProfile(database.getList().get(input.nextInt() - 1));
+        }
+    }
+
+    // EFFECTS: prints a list of profiles
+    private void printProfiles(List<Profile> profiles) {
+        for (int i = 1; i <= profiles.size(); i++) {
+            System.out.println("PROFILE " + i);
+            System.out.println("Name: " + profiles.get(i - 1).getName());
+            System.out.println("Faculty: " + profiles.get(i - 1).getFaculty());
+            System.out.println("Route: " + profiles.get(i - 1).getRoute());
+            System.out.println("Message: " + profiles.get(i - 1).getMessage());
         }
     }
 
