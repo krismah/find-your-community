@@ -73,9 +73,6 @@ public class ProfileApp {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         userList = new ProfileList();
-        userList.addProfile(sampleUser1);
-        userList.addProfile(sampleUser2);
-        userList.addProfile(sampleUser3);
         faculties = new ArrayList<>();
         faculties.add("Applied Science");
         faculties.add("Arts");
