@@ -1,10 +1,9 @@
 package model;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-// Represents a list of profiles
+// Represents a user's list of profiles
 public class ProfileList implements ProfileOperations {
     private List<Profile> profiles;
 

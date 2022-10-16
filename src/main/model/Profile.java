@@ -13,7 +13,6 @@ public class Profile {
         this.faculty = faculty;
         this.route = route;
         this.message = message;
-
     }
 
     public String getName() {
