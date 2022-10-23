@@ -21,4 +21,6 @@ space for commuter students to find other commuter students!
 - As a user, I want to be able to sort all the profiles by faculty and/or commute route.
 - As a user, I want to be able to add a profile to a list of profiles of people who have something in common with me.
 - As a user, I want to be able to remove a profile from my list of profiles.
+- As a user, I want to be able to save my profiles to file.
+- As a user, I want to be able to load my profiles from file.
 
