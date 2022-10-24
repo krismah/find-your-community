@@ -9,7 +9,7 @@ public class ProfileList {
 
     // EFFECTS: creates an empty list, where profiles can be added either by the user or the program itself
     public ProfileList() {
-        profiles = new ArrayList<Profile>();
+        profiles = new ArrayList<>();
 
     }
 

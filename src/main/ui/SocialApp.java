@@ -2,28 +2,38 @@ package ui;
 
 import model.Profile;
 import model.ProfileList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Profile application (inspired by TellerApp)
-public class ProfileApp {
+// Profile application (based on TellerApp and Json Demo from CPSC 210)
+public class SocialApp {
     private Profile user;
     private ProfileList userList;
     private ProfileList database;
     private Scanner input;
     private boolean profileCreated;
     private List<String> faculties;
+    private static final String JSON_STORE_USER_LIST = "./data/appstate.json";
+    private JsonReader jsonReaderUserList;
+    private JsonWriter jsonWriterUserList;
 
-    // EFFECTS: run the profile application
-    public ProfileApp() {
-        runProfileApp();
+
+    // EFFECTS: runs the social application
+    public SocialApp() {
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
+        jsonWriterUserList = new JsonWriter(JSON_STORE);
+        jsonReaderUserList = new JsonReader(JSON_STORE);
+        runSocialApp();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runProfileApp() {
+    private void runSocialApp() {
         boolean keepGoing = true;
         String command = null;
 
@@ -57,8 +67,7 @@ public class ProfileApp {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: initializes the database of profiles
+    // EFFECTS: initializes database of profiles and faculty lists
     private void initialize() {
         Profile sampleUser1 = new Profile("Tim", "Land and Food Systems", 99, "Hello!");
         Profile sampleUser2 = new Profile("Karen", "Science", 33, "I love bacteria!");
@@ -67,8 +76,6 @@ public class ProfileApp {
         database.addProfile(sampleUser1);
         database.addProfile(sampleUser2);
         database.addProfile(sampleUser3);
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
         userList = new ProfileList();
         faculties = new ArrayList<>();
         faculties.add("Applied Science");
