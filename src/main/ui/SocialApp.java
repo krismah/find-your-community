@@ -26,7 +26,7 @@ public class SocialApp {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         jsonWriter = new JsonWriter();
-        jsonReader = new JsonReader();
+        jsonReader = new JsonReader(JSON_STORE);
         runSocialApp();
     }
 

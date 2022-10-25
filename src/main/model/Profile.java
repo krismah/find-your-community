@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a profile with a name, faculty, commute route and short message
-public class Profile {
+public class Profile implements Writable {
     private String name;
     private String faculty;
     private int route;
@@ -31,4 +34,13 @@ public class Profile {
         return message;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("faculty", faculty);
+        json.put("route", route);
+        json.put("message", message);
+        return json;
+    }
 }
