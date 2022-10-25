@@ -17,17 +17,16 @@ public class SocialApp {
     private Scanner input;
     private boolean profileCreated;
     private List<String> faculties;
-    private static final String JSON_STORE_USER_LIST = "./data/appstate.json";
-    private JsonReader jsonReaderUserList;
-    private JsonWriter jsonWriterUserList;
-
+    private static final String JSON_STORE = "./data/account.json";
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
 
     // EFFECTS: runs the social application
     public SocialApp() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        jsonWriterUserList = new JsonWriter(JSON_STORE);
-        jsonReaderUserList = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter();
+        jsonReader = new JsonReader();
         runSocialApp();
     }
 
