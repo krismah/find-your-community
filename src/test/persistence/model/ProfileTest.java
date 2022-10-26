@@ -1,5 +1,6 @@
-package model;
+package persistence.model;
 
+import model.Profile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

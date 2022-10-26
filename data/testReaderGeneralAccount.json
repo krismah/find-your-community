@@ -1,0 +1,29 @@
+{
+    "name": "Karen",
+    "faculty": "Science",
+    "route": 33,
+    "message": "I love bacteria!",
+
+  "userlist":[
+    {
+      "name": "Nathan",
+      "faculty": "Arts",
+      "route": 99,
+      "message":"Howdy there!"
+    }
+  ],
+  "database": [
+    {
+      "name": "Nathan",
+      "faculty": "Arts",
+      "route": 99,
+      "message":"Howdy there!"
+    },
+    {
+      "name": "Tim",
+      "faculty": "Land and Food Systems",
+      "route": 49,
+      "message": "Hello!"
+    }
+  ]
+}

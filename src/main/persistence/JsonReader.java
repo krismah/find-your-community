@@ -33,7 +33,7 @@ public class JsonReader {
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
-        try (Stream<String> stream = Files.lines( Paths.get(source), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
 
@@ -43,6 +43,7 @@ public class JsonReader {
     // EFFECTS: parses account from JSON object and returns it
     private Account parseAccount(JSONObject jsonObject) {
         Account acc = new Account();
+        addProfile(acc, jsonObject, "profile");
         addProfilesFromUserList(acc, jsonObject);
         addProfilesFromDatabase(acc, jsonObject);
         return acc;
@@ -78,6 +79,9 @@ public class JsonReader {
         int route = jsonObject.getInt("route");
         String message = jsonObject.getString("message");
         Profile profile = new Profile(name, faculty, route, message);
+        if (select == "profile") {
+            acc.setUserProfile(profile);
+        }
         if (select == "userlist") {
             acc.getUserList().addProfile(profile);
         }

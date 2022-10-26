@@ -1,5 +1,8 @@
 {
-  "userprofile":
+    "name": "Initial",
+    "faculty": "Science",
+    "route": 99,
+    "message": "Initial Message",
   "userlist": [],
-  "database": [],
+  "database": []
 }
