@@ -47,7 +47,10 @@ public class Account implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("userprofile", userProfile.toJson());
+        json.put("name", userProfile.getName());
+        json.put("faculty", userProfile.getFaculty());
+        json.put("route", userProfile.getRoute());
+        json.put("message", userProfile.getMessage());
         json.put("userlist", profilesToJson(userList));
         json.put("database", profilesToJson(database));
         return json;
