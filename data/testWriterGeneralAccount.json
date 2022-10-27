@@ -1,0 +1,26 @@
+{
+     "userlist": [{
+          "route": 99,
+          "name": "Kris",
+          "message": "Hello there!",
+          "faculty": "Science"
+     }],
+     "database": [
+          {
+               "route": 49,
+               "name": "Trisha",
+               "message": "Sauder!",
+               "faculty": "Sauder School of Business"
+          },
+          {
+               "route": 33,
+               "name": "Josh",
+               "message": "Writing!",
+               "faculty": "Arts"
+          }
+     ],
+     "route": 99,
+     "name": "Kris",
+     "message": "Hello there!",
+     "faculty": "Science"
+}

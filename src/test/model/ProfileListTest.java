@@ -1,4 +1,4 @@
-package persistence.model;
+package model;
 
 import model.Profile;
 import model.ProfileList;
