@@ -19,14 +19,13 @@ public class SocialApp {
     private ProfileList userList;
     private ProfileList database;
     private Scanner input;
-    private boolean profileCreated;
     private List<String> faculties;
     private static final String JSON_STORE = "./data/account.json";
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
 
     // EFFECTS: runs the social application
-    public SocialApp() {
+    public SocialApp() throws FileNotFoundException {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -54,6 +53,17 @@ public class SocialApp {
             }
         }
 
+    }
+
+    // EFFECTS: displays menu of options to user
+    private void displayMenu() {
+        System.out.println("\nWelcome! Select from one of the following options:");
+        System.out.println("\tc : Create Your Profile");
+        System.out.println("\tp : View Your Personal List of Profiles");
+        System.out.println("\td : View All Profiles");
+        System.out.println("\ts : Save Your Account to File");
+        System.out.println("\tl : Load Your Account from File");
+        System.out.println("\tq : Quit Application");
     }
 
     // MODIFIES: this
@@ -96,20 +106,9 @@ public class SocialApp {
 
     }
 
-    // EFFECTS: displays menu of options to user
-    private void displayMenu() {
-        System.out.println("\nWelcome! Select from one of the following options:");
-        System.out.println("\tc : Create Your Profile");
-        System.out.println("\tp : View Your Personal List of Profiles");
-        System.out.println("\td : View All Profiles");
-        System.out.println("\ts : Save Your Account to File");
-        System.out.println("\tl : Load Your Account from File");
-        System.out.println("\tq : Quit Application");
-    }
-
     // EFFECTS: creates a user's profile
     private void createUserProfile() {
-        if (!profileCreated) {
+        if (!acc.getProfileCreated()) {
             System.out.println("What is your name?");
             String name = input.next();
 
@@ -125,7 +124,7 @@ public class SocialApp {
             String message = input.next();
 
             user = new Profile(name, faculty, route, message);
-            profileCreated = true;
+            acc.setProfileCreated(true);
             acc.setUserProfile(user);
             database.addProfile(user);
 
@@ -259,6 +258,8 @@ public class SocialApp {
     // EFFECTS: saves the account to file
     private void saveAccount() {
         try {
+            acc.setDatabase(database);
+            acc.setUserList(userList);
             jsonWriter.open();
             jsonWriter.write(acc);
             jsonWriter.close();

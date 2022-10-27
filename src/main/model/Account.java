@@ -9,12 +9,14 @@ public class Account implements Writable {
     private Profile userProfile;
     private ProfileList userList;
     private ProfileList database;
+    private boolean profileCreated;
 
     // EFFECTS: creates an account with an initial Profile and two empty ProfileList, database and userList
     public Account() {
         userProfile = new Profile("Initial", "Science", 99, "Initial Message");
         userList = new ProfileList();
         database = new ProfileList();
+        profileCreated = false;
     }
 
 
@@ -31,6 +33,10 @@ public class Account implements Writable {
         return database;
     }
 
+    public boolean getProfileCreated() {
+        return profileCreated;
+    }
+
     public void setUserProfile(Profile userProfile) {
         this.userProfile = userProfile;
     }
@@ -43,6 +49,10 @@ public class Account implements Writable {
         this.database = database;
     }
 
+    public void setProfileCreated(boolean status) {
+        profileCreated = status;
+    }
+
 
     @Override
     public JSONObject toJson() {
@@ -51,6 +61,7 @@ public class Account implements Writable {
         json.put("faculty", userProfile.getFaculty());
         json.put("route", userProfile.getRoute());
         json.put("message", userProfile.getMessage());
+        json.put("profilecreated", profileCreated);
         json.put("userlist", profilesToJson(userList));
         json.put("database", profilesToJson(database));
         return json;

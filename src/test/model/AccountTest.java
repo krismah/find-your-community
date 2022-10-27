@@ -22,5 +22,6 @@ public class AccountTest {
         assertEquals("Initial Message", testAccount.getUserProfile().getMessage());
         assertEquals(0, testAccount.getDatabase().getList().size());
         assertEquals(0, testAccount.getUserList().getList().size());
+        assertFalse(testAccount.getProfileCreated());
     }
 }

@@ -46,6 +46,7 @@ public class JsonReader {
         addProfile(acc, jsonObject, "profile");
         addProfilesFromUserList(acc, jsonObject);
         addProfilesFromDatabase(acc, jsonObject);
+        acc.setProfileCreated(jsonObject.getBoolean("profilecreated"));
         return acc;
     }
 
@@ -89,5 +90,7 @@ public class JsonReader {
             acc.getDatabase().addProfile(profile);
         }
     }
+
+
 
 }
