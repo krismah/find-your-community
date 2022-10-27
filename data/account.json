@@ -18,17 +18,11 @@
                "name": "Nathan",
                "message": "Howdy!",
                "faculty": "Arts"
-          },
-          {
-               "route": 2,
-               "name": "Kris",
-               "message": "slay",
-               "faculty": "Applied Science"
           }
      ],
-     "route": 2,
-     "profilecreated": true,
-     "name": "Kris",
-     "message": "slay",
-     "faculty": "Applied Science"
+     "route": 99,
+     "profilecreated": false,
+     "name": "Initial",
+     "message": "Initial Message",
+     "faculty": "Science"
 }

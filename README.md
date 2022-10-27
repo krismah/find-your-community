@@ -24,3 +24,8 @@ space for commuter students to find other commuter students!
 - As a user, I want to be able to save my profiles to file.
 - As a user, I want to be able to load my profiles from file.
 
+***Sources***
+- Teller App
+  https://github.students.cs.ubc.ca/CPSC210/TellerApp
+- JSON Demo
+https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
