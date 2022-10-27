@@ -1,16 +1,20 @@
 package ui;
 
+import model.Account;
 import model.Profile;
 import model.ProfileList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Profile application (based on TellerApp and Json Demo from CPSC 210)
+// Profile application (based on TellerApp and JSON Demo from CPSC 210)
 public class SocialApp {
+    private Account acc;
     private Profile user;
     private ProfileList userList;
     private ProfileList database;
@@ -57,10 +61,14 @@ public class SocialApp {
     private void processCommand(String command) {
         if (command.equals("c")) {
             createUserProfile();
-        } else if (command.equals("l")) {
+        } else if (command.equals("p")) {
             viewProfilesMenu(userList);
         } else if (command.equals("d")) {
             viewProfilesMenu(database);
+        } else if (command.equals("s")) {
+            saveAccount();
+        } else if (command.equals("l")) {
+            loadAccount();
         } else {
             System.out.println("Invalid selection.");
         }
@@ -71,11 +79,12 @@ public class SocialApp {
         Profile sampleUser1 = new Profile("Tim", "Land and Food Systems", 99, "Hello!");
         Profile sampleUser2 = new Profile("Karen", "Science", 33, "I love bacteria!");
         Profile sampleUser3 = new Profile("Nathan", "Arts", 49, "Howdy!");
-        database = new ProfileList();
+        acc = new Account();
+        database = acc.getDatabase();
         database.addProfile(sampleUser1);
         database.addProfile(sampleUser2);
         database.addProfile(sampleUser3);
-        userList = new ProfileList();
+        userList = acc.getUserList();
         faculties = new ArrayList<>();
         faculties.add("Applied Science");
         faculties.add("Arts");
@@ -91,8 +100,10 @@ public class SocialApp {
     private void displayMenu() {
         System.out.println("\nWelcome! Select from one of the following options:");
         System.out.println("\tc : Create Your Profile");
-        System.out.println("\tl : View Your Personal List of Profiles");
+        System.out.println("\tp : View Your Personal List of Profiles");
         System.out.println("\td : View All Profiles");
+        System.out.println("\ts : Save Your Account to File");
+        System.out.println("\tl : Load Your Account from File");
         System.out.println("\tq : Quit Application");
     }
 
@@ -115,6 +126,7 @@ public class SocialApp {
 
             user = new Profile(name, faculty, route, message);
             profileCreated = true;
+            acc.setUserProfile(user);
             database.addProfile(user);
 
         } else {
@@ -241,6 +253,28 @@ public class SocialApp {
             System.out.println("\tFaculty: " + profiles.get(i - 1).getFaculty());
             System.out.println("\tRoute: " + profiles.get(i - 1).getRoute());
             System.out.println("\tMessage: " + profiles.get(i - 1).getMessage());
+        }
+    }
+
+    // EFFECTS: saves the account to file
+    private void saveAccount() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(acc);
+            jsonWriter.close();
+            System.out.println("Saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: loads the account from file
+    private void loadAccount() {
+        try {
+            acc = jsonReader.read();
+            System.out.println("Successfully loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to load from " + JSON_STORE);
         }
     }
 

@@ -74,10 +74,10 @@ public class JsonReader {
     // MODIFIES: acc
     // EFFECTS: parses profile from JSON object and adds it to account
     private void addProfile(Account acc, JSONObject jsonObject, String select) {
-        String name = jsonObject.getString("name");
-        String faculty = jsonObject.getString("faculty");
         int route = jsonObject.getInt("route");
+        String name = jsonObject.getString("name");
         String message = jsonObject.getString("message");
+        String faculty = jsonObject.getString("faculty");
         Profile profile = new Profile(name, faculty, route, message);
         if (select == "profile") {
             acc.setUserProfile(profile);

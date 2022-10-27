@@ -49,7 +49,8 @@ public class JsonReaderTest extends JsonTest {
             checkProfile("Nathan", "Arts", 99, "Howdy there!", accUserList.getList().get(0));
             assertEquals(2, accDatabase.getList().size());
             checkProfile("Nathan", "Arts", 99, "Howdy there!", accDatabase.getList().get(0));
-            checkProfile("Tim", "Land and Food Systems", 49, "Hello!", accDatabase.getList().get(1));
+            checkProfile("Tim", "Land and Food Systems", 49, "Hello!",
+                    accDatabase.getList().get(1));
         } catch (IOException e) {
             fail("Didn't load from file");
         }
