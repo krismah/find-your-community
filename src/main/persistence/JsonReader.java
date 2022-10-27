@@ -80,13 +80,13 @@ public class JsonReader {
         String message = jsonObject.getString("message");
         String faculty = jsonObject.getString("faculty");
         Profile profile = new Profile(name, faculty, route, message);
-        if (select == "profile") {
+        if (select.equals("profile")) {
             acc.setUserProfile(profile);
         }
-        if (select == "userlist") {
+        if (select.equals("userlist")) {
             acc.getUserList().addProfile(profile);
         }
-        if (select == "database") {
+        if (select.equals("database")) {
             acc.getDatabase().addProfile(profile);
         }
     }

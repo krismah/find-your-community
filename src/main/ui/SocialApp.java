@@ -21,8 +21,8 @@ public class SocialApp {
     private Scanner input;
     private List<String> faculties;
     private static final String JSON_STORE = "./data/account.json";
-    private JsonReader jsonReader;
     private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the social application
     public SocialApp() throws FileNotFoundException {
@@ -127,6 +127,7 @@ public class SocialApp {
             acc.setProfileCreated(true);
             acc.setUserProfile(user);
             database.addProfile(user);
+            System.out.println("Profile created!");
 
         } else {
             System.out.println("You've already created a profile!");
@@ -273,6 +274,9 @@ public class SocialApp {
     private void loadAccount() {
         try {
             acc = jsonReader.read();
+            user = acc.getUserProfile();
+            userList = acc.getUserList();
+            database = acc.getDatabase();
             System.out.println("Successfully loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to load from " + JSON_STORE);

@@ -20,15 +20,15 @@
                "faculty": "Arts"
           },
           {
-               "route": 99,
+               "route": 2,
                "name": "Kris",
-               "message": "Hello!",
-               "faculty": "Arts"
+               "message": "slay",
+               "faculty": "Applied Science"
           }
      ],
-     "route": 99,
+     "route": 2,
      "profilecreated": true,
      "name": "Kris",
-     "message": "Hello!",
-     "faculty": "Arts"
+     "message": "slay",
+     "faculty": "Applied Science"
 }
