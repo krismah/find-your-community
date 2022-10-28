@@ -207,7 +207,7 @@ public class SocialApp {
                 printProfiles(userList.sortProfileByFaculty(faculties.get(input.nextInt() - 1)));
             } else if (choice.equals("r")) {
                 System.out.println("Enter a bus route:");
-                printProfiles(userList.sortProfileByRoute(input.nextInt() - 1));
+                printProfiles(userList.sortProfileByRoute(input.nextInt()));
             }
         } else if (choice.equals("r")) {
             System.out.println("Enter which profile number you would like to remove:");
