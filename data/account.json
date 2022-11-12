@@ -1,16 +1,16 @@
 {
      "userlist": [
           {
+               "route": 99,
+               "name": "Tim",
+               "message": "Hello!",
+               "faculty": "Land and Food Systems"
+          },
+          {
                "route": 33,
                "name": "Karen",
                "message": "I love bacteria!",
                "faculty": "Science"
-          },
-          {
-               "route": 49,
-               "name": "Nathan",
-               "message": "Howdy!",
-               "faculty": "Arts"
           }
      ],
      "database": [
@@ -31,17 +31,11 @@
                "name": "Nathan",
                "message": "Howdy!",
                "faculty": "Arts"
-          },
-          {
-               "route": 99,
-               "name": "Kris",
-               "message": "Hello!",
-               "faculty": "Science"
           }
      ],
      "route": 99,
-     "profilecreated": true,
-     "name": "Kris",
-     "message": "Hello!",
+     "profilecreated": false,
+     "name": "Initial",
+     "message": "Initial Message",
      "faculty": "Science"
 }
