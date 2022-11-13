@@ -38,6 +38,7 @@ public class GUI {
     private JPanel userGraphicalDatabase;
     private JList graphicalUserList;
     private JPanel userGraphicalUserList;
+    private JFrame confirmationFrame;
 
     public GUI() {
         frame = new JFrame("Find Your Community!");
@@ -244,6 +245,7 @@ public class GUI {
             jsonWriter.open();
             jsonWriter.write(acc);
             jsonWriter.close();
+            confirmSaveOrLoad("save");
             System.out.println("Saved to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to save to " + JSON_STORE);
@@ -259,6 +261,7 @@ public class GUI {
             database = acc.getDatabase();
             reloadProfileList(database);
             reloadProfileList(userList);
+            confirmSaveOrLoad("load");
             System.out.println("Successfully loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to load from " + JSON_STORE);
@@ -278,5 +281,29 @@ public class GUI {
         } else {
             graphicalUserList.setModel(list);
         }
+    }
+
+    private void confirmSaveOrLoad(String state) {
+        String sep = System.getProperty("file.separator");
+        ImageIcon checkmark = new ImageIcon(System.getProperty("user.dir") + sep + "data" + sep + "images"
+                + sep + "checkmark.png");
+        confirmationFrame = new JFrame();
+
+        JLabel label = new JLabel(checkmark);
+        JLabel confirmation;
+
+        if (state.equals("save")) {
+            confirmation = new JLabel("Successfully saved to ./data/account.json");
+        } else {
+            confirmation = new JLabel("Successfully loaded from ./data/account.json");
+        }
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(confirmation);
+
+        confirmationFrame.add(panel);
+        confirmationFrame.pack();
+        confirmationFrame.setVisible(true);
     }
 }
