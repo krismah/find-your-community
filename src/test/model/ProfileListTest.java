@@ -75,7 +75,7 @@ public class ProfileListTest {
         testProfileList.addProfile(testProfile3);
         List<Profile> sorted = new ArrayList<>();
         sorted.add(testProfile2);
-        assertEquals(sorted, testProfileList.sortProfileByFaculty("Applied Science"));
+        assertEquals(sorted, testProfileList.sortProfileByFaculty("Applied Science").getList());
     }
     @Test
     void testSortProfileByFacultyExistsMultipleProfiles() {
@@ -85,7 +85,7 @@ public class ProfileListTest {
         List<Profile> sorted = new ArrayList<>();
         sorted.add(testProfile1);
         sorted.add(testProfile3);
-        assertEquals(sorted, testProfileList.sortProfileByFaculty("Arts"));
+        assertEquals(sorted, testProfileList.sortProfileByFaculty("Arts").getList());
     }
 
     @Test
@@ -93,8 +93,8 @@ public class ProfileListTest {
         testProfileList.addProfile(testProfile1);
         testProfileList .addProfile(testProfile2);
         List<Profile> sorted = new ArrayList<>();
-        assertEquals(sorted, testProfileList.sortProfileByFaculty("Science"));
-        assertEquals(0, testProfileList.sortProfileByFaculty("Science").size());
+        assertEquals(sorted, testProfileList.sortProfileByFaculty("Science").getList());
+        assertEquals(0, testProfileList.sortProfileByFaculty("Science").getList().size());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class ProfileListTest {
         testProfileList.addProfile(testProfile3);
         List<Profile> sorted = new ArrayList<>();
         sorted.add(testProfile1);
-        assertEquals(sorted, testProfileList.sortProfileByRoute(33));
+        assertEquals(sorted, testProfileList.sortProfileByRoute(33).getList());
     }
 
     @Test
@@ -115,7 +115,7 @@ public class ProfileListTest {
         List<Profile> sorted = new ArrayList<>();
         sorted.add(testProfile2);
         sorted.add(testProfile3);
-        assertEquals(sorted, testProfileList.sortProfileByRoute(49));
+        assertEquals(sorted, testProfileList.sortProfileByRoute(49).getList());
     }
 
     @Test
@@ -124,8 +124,8 @@ public class ProfileListTest {
         testProfileList.addProfile(testProfile2);
         testProfileList.addProfile(testProfile3);
         List<Profile> sorted = new ArrayList<>();
-        assertEquals(sorted, testProfileList.sortProfileByRoute(99));
-        assertEquals(0, testProfileList.sortProfileByRoute(99).size());
+        assertEquals(sorted, testProfileList.sortProfileByRoute(99).getList());
+        assertEquals(0, testProfileList.sortProfileByRoute(99).getList().size());
     }
 
 }

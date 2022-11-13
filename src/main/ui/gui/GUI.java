@@ -104,12 +104,7 @@ public class GUI {
 
     // EFFECTS: initializes the graphical representation of database
     private void initializeDatabase() {
-        DefaultListModel listModel = new DefaultListModel();
-
-        for (Profile profile : acc.getDatabase().getList()) {
-            listModel.addElement(profile.getName() + " || " + profile.getFaculty()
-                    + " || " + profile.getRoute() + " || " + profile.getMessage());
-        }
+        DefaultListModel listModel = printProfiles(acc.getDatabase());
 
         graphicalDatabase = new JList(listModel);
         graphicalDatabase.addListSelectionListener(new ListSelectionListener() {
@@ -144,7 +139,7 @@ public class GUI {
         sortProfiles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("sort profiles button");
+                sortProfilesAction(database);
             }
         });
 
@@ -160,12 +155,8 @@ public class GUI {
 
     // EFFECTS: initializes the graphical representation of userlist
     private void initializeUserList() {
-        DefaultListModel listModel = new DefaultListModel();
+        DefaultListModel listModel = printProfiles(acc.getUserList());
 
-        for (Profile profile : acc.getUserList().getList()) {
-            listModel.addElement(profile.getName() + " || " + profile.getFaculty()
-                    + " || " + profile.getRoute() + " || " + profile.getMessage());
-        }
         graphicalUserList = new JList(listModel);
         graphicalUserList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -199,7 +190,7 @@ public class GUI {
         sortProfiles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("sort profiles button");
+                sortProfilesAction(userList);
             }
         });
 
@@ -215,26 +206,59 @@ public class GUI {
 
     private void addProfileAction() {
         userList.addProfile(database.getList().get(graphicalDatabase.getSelectedIndex()));
-        DefaultListModel list = new DefaultListModel();
-
-        for (Profile profile : acc.getUserList().getList()) {
-            list.addElement(profile.getName() + " || " + profile.getFaculty()
-                    + " || " + profile.getRoute() + " || " + profile.getMessage());
-        }
+        DefaultListModel list = printProfiles(acc.getUserList());
 
         graphicalUserList.setModel(list);
     }
 
     private void removeProfileAction() {
         userList.removeProfile(userList.getList().get(graphicalUserList.getSelectedIndex()));
+        DefaultListModel list = printProfiles(acc.getUserList());
+
+        graphicalUserList.setModel(list);
+    }
+
+    private void sortProfilesAction(ProfileList profileList) {
+        JPanel sortPanel = new JPanel();
+        JLabel label = new JLabel("Enter a route:");
+        JTextField sortCondition = new JTextField(2);
+        JButton button = new JButton("Confirm");
+
+        sortPanel.add(label);
+        sortPanel.add(sortCondition);
+        sortPanel.add(button);
+
+        JFrame userSortFrame = new JFrame();
+        userSortFrame.add(sortPanel);
+
+        userSortFrame.setSize(100, 150);
+        userSortFrame.setVisible(true);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userSortFrame.dispose();
+                int response = Integer.parseInt(sortCondition.getText());
+
+                JFrame sortedFrame = new JFrame();
+                DefaultListModel list = printProfiles(profileList.sortProfileByRoute(response));
+
+                JList sortedList = new JList(list);
+                sortedFrame.add(sortedList);
+                sortedFrame.pack();
+                sortedFrame.setVisible(true);
+            }
+        });
+    }
+
+    private DefaultListModel printProfiles(ProfileList profileList) {
         DefaultListModel list = new DefaultListModel();
 
-        for (Profile profile : acc.getUserList().getList()) {
+        for (Profile profile : profileList.getList()) {
             list.addElement(profile.getName() + " || " + profile.getFaculty()
                     + " || " + profile.getRoute() + " || " + profile.getMessage());
         }
-
-        graphicalUserList.setModel(list);
+        return list;
     }
 
     // EFFECTS: saves the account to file
@@ -269,12 +293,7 @@ public class GUI {
     }
 
     private void reloadProfileList(ProfileList profileList) {
-        DefaultListModel list = new DefaultListModel();
-
-        for (Profile profile : profileList.getList()) {
-            list.addElement(profile.getName() + " || " + profile.getFaculty()
-                    + " || " + profile.getRoute() + " || " + profile.getMessage());
-        }
+        DefaultListModel list = printProfiles(profileList);
 
         if (profileList.equals(database)) {
             graphicalDatabase.setModel(list);

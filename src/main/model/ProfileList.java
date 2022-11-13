@@ -28,22 +28,22 @@ public class ProfileList {
     }
 
     // EFFECTS: creates a new sorted list of profiles based on faculty
-    public ArrayList<Profile> sortProfileByFaculty(String faculty) {
-        ArrayList<Profile> sorted = new ArrayList<Profile>();
+    public ProfileList sortProfileByFaculty(String faculty) {
+        ProfileList sorted = new ProfileList();
         for (Profile profile: profiles) {
             if (profile.getFaculty().equals(faculty)) {
-                sorted.add(profile);
+                sorted.addProfile(profile);
             }
         }
         return sorted;
     }
 
     // EFFECTS: creates a new sorted list of profiles based on route
-    public ArrayList<Profile> sortProfileByRoute(int route) {
-        ArrayList<Profile> sorted = new ArrayList<Profile>();
+    public ProfileList sortProfileByRoute(int route) {
+        ProfileList sorted = new ProfileList();
         for (Profile profile: profiles) {
             if (profile.getRoute() == route) {
-                sorted.add(profile);
+                sorted.addProfile(profile);
             }
         }
         return sorted;

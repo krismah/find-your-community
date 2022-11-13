@@ -204,10 +204,10 @@ public class SocialApp {
             if (choice.equals("f")) {
                 System.out.println("Enter a faculty:");
                 printFaculties();
-                printProfiles(userList.sortProfileByFaculty(faculties.get(input.nextInt() - 1)));
+                printProfiles(userList.sortProfileByFaculty(faculties.get(input.nextInt() - 1)).getList());
             } else if (choice.equals("r")) {
                 System.out.println("Enter a bus route:");
-                printProfiles(userList.sortProfileByRoute(input.nextInt()));
+                printProfiles(userList.sortProfileByRoute(input.nextInt()).getList());
             }
         } else if (choice.equals("r")) {
             System.out.println("Enter which profile number you would like to remove:");
@@ -232,10 +232,10 @@ public class SocialApp {
             if (choice.equals("f")) {
                 System.out.println("Enter a faculty:");
                 printFaculties();
-                printProfiles(database.sortProfileByFaculty(faculties.get(input.nextInt() - 1)));
+                printProfiles(database.sortProfileByFaculty(faculties.get(input.nextInt() - 1)).getList());
             } else if (choice.equals("r")) {
                 System.out.println("Enter a bus route:");
-                printProfiles(database.sortProfileByRoute(input.nextInt()));
+                printProfiles(database.sortProfileByRoute(input.nextInt()).getList());
             }
         } else if (choice.equals("a")) {
             System.out.println("Enter the profile number you would like to add:");
