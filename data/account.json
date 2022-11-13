@@ -7,9 +7,9 @@
                "faculty": "Land and Food Systems"
           },
           {
-               "route": 33,
-               "name": "Karen",
-               "message": "I love bacteria!",
+               "route": 99,
+               "name": "Marie",
+               "message": "Chemistry-fanatic!",
                "faculty": "Science"
           }
      ],
@@ -31,6 +31,18 @@
                "name": "Nathan",
                "message": "Howdy!",
                "faculty": "Arts"
+          },
+          {
+               "route": 99,
+               "name": "Marie",
+               "message": "Chemistry-fanatic!",
+               "faculty": "Science"
+          },
+          {
+               "route": 49,
+               "name": "Tyler",
+               "message": "Money money money!",
+               "faculty": "Sauder School of Business"
           }
      ],
      "route": 99,

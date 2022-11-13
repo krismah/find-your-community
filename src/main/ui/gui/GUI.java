@@ -13,6 +13,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
@@ -71,6 +73,8 @@ public class GUI {
         database.addProfile(sampleUser4);
         database.addProfile(sampleUser5);
         userList = acc.getUserList();
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
     }
 
     // EFFECTS: initializes the saving and loading buttons and features
@@ -81,7 +85,7 @@ public class GUI {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("save button pushed!");
+                saveAccount();
             }
         });
 
@@ -89,7 +93,7 @@ public class GUI {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("load button pushed!");
+                loadAccount();
             }
         });
 
@@ -230,5 +234,49 @@ public class GUI {
         }
 
         graphicalUserList.setModel(list);
+    }
+
+    // EFFECTS: saves the account to file
+    private void saveAccount() {
+        try {
+            acc.setDatabase(database);
+            acc.setUserList(userList);
+            jsonWriter.open();
+            jsonWriter.write(acc);
+            jsonWriter.close();
+            System.out.println("Saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: loads the account from file
+    private void loadAccount() {
+        try {
+            acc = jsonReader.read();
+            user = acc.getUserProfile();
+            userList = acc.getUserList();
+            database = acc.getDatabase();
+            reloadProfileList(database);
+            reloadProfileList(userList);
+            System.out.println("Successfully loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to load from " + JSON_STORE);
+        }
+    }
+
+    private void reloadProfileList(ProfileList profileList) {
+        DefaultListModel list = new DefaultListModel();
+
+        for (Profile profile : profileList.getList()) {
+            list.addElement(profile.getName() + " || " + profile.getFaculty()
+                    + " || " + profile.getRoute() + " || " + profile.getMessage());
+        }
+
+        if (profileList.equals(database)) {
+            graphicalDatabase.setModel(list);
+        } else {
+            graphicalUserList.setModel(list);
+        }
     }
 }
