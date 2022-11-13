@@ -1,5 +1,18 @@
 {
-     "userlist": [],
+     "userlist": [
+          {
+               "route": 33,
+               "name": "Karen",
+               "message": "I love bacteria!",
+               "faculty": "Science"
+          },
+          {
+               "route": 49,
+               "name": "Nathan",
+               "message": "Howdy!",
+               "faculty": "Arts"
+          }
+     ],
      "database": [
           {
                "route": 99,

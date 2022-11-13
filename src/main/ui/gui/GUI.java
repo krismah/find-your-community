@@ -40,6 +40,7 @@ public class GUI {
     private JPanel userGraphicalUserList;
     private JFrame confirmationFrame;
 
+    // EFFECTS: constructs the graphical user interface
     public GUI() {
         frame = new JFrame("Find Your Community!");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -125,6 +126,7 @@ public class GUI {
         createDatabaseButtons();
     }
 
+    // EFFECTS: creates buttons related to database
     private void createDatabaseButtons() {
         JLabel databaseLabel = new JLabel("Profile Database" + " (Name, Faculty, Route, and Message)");
         JButton addProfile = new JButton("Add Profile to Your List");
@@ -176,6 +178,7 @@ public class GUI {
         createUserListButtons();
     }
 
+    // EFFECTS: creates buttons related to userList
     private void createUserListButtons() {
         JLabel userListLabel = new JLabel("Your List of Profiles");
         JButton removeProfile = new JButton("Remove Profile");
@@ -204,6 +207,7 @@ public class GUI {
         userGraphicalUserList.add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // EFFECTS: adds a given profile
     private void addProfileAction() {
         userList.addProfile(database.getList().get(graphicalDatabase.getSelectedIndex()));
         DefaultListModel list = printProfiles(acc.getUserList());
@@ -211,6 +215,7 @@ public class GUI {
         graphicalUserList.setModel(list);
     }
 
+    // EFFECTS: removes a given profile
     private void removeProfileAction() {
         userList.removeProfile(userList.getList().get(graphicalUserList.getSelectedIndex()));
         DefaultListModel list = printProfiles(acc.getUserList());
@@ -218,6 +223,7 @@ public class GUI {
         graphicalUserList.setModel(list);
     }
 
+    // EFFECTS: sorts the list by a given condition
     private void sortProfilesAction(ProfileList profileList) {
         JPanel sortPanel = new JPanel();
         JLabel label = new JLabel("Enter a route:");
@@ -238,10 +244,10 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userSortFrame.dispose();
-                int response = Integer.parseInt(sortCondition.getText());
 
                 JFrame sortedFrame = new JFrame();
-                DefaultListModel list = printProfiles(profileList.sortProfileByRoute(response));
+                DefaultListModel list = printProfiles(profileList.sortProfileByRoute
+                        (Integer.parseInt(sortCondition.getText())));
 
                 JList sortedList = new JList(list);
                 sortedFrame.add(sortedList);
@@ -251,6 +257,7 @@ public class GUI {
         });
     }
 
+    // EFFECTS: creates a list that represents each profile
     private DefaultListModel printProfiles(ProfileList profileList) {
         DefaultListModel list = new DefaultListModel();
 
@@ -292,6 +299,7 @@ public class GUI {
         }
     }
 
+    // EFFECTS: loads the graphical representation of lists from file
     private void reloadProfileList(ProfileList profileList) {
         DefaultListModel list = printProfiles(profileList);
 
@@ -302,6 +310,7 @@ public class GUI {
         }
     }
 
+    // EFFECTS: opens a new window confirming saving or loading was successful
     private void confirmSaveOrLoad(String state) {
         String sep = System.getProperty("file.separator");
         ImageIcon checkmark = new ImageIcon(System.getProperty("user.dir") + sep + "data" + sep + "images"
