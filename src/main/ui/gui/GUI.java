@@ -244,17 +244,29 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userSortFrame.dispose();
+                int response = Integer.parseInt(sortCondition.getText());
 
-                JFrame sortedFrame = new JFrame();
-                DefaultListModel list = printProfiles(profileList.sortProfileByRoute
-                        (Integer.parseInt(sortCondition.getText())));
+                DefaultListModel list = printProfiles(profileList.sortProfileByRoute(response));
 
                 JList sortedList = new JList(list);
-                sortedFrame.add(sortedList);
-                sortedFrame.pack();
-                sortedFrame.setVisible(true);
+                sortedFrame(sortedList);
             }
         });
+    }
+
+    // EFFECTS: creates a frame to show the sorted list
+    private void sortedFrame(JList list) {
+        JFrame sortedFrame = new JFrame();
+        JLabel label = new JLabel("The following profiles have the same route:");
+        JPanel panel = new JPanel(new BorderLayout());
+
+        panel.add(label, BorderLayout.NORTH);
+        panel.add(list, BorderLayout.CENTER);
+
+        sortedFrame.add(panel);
+        sortedFrame.pack();
+        sortedFrame.setVisible(true);
+
     }
 
     // EFFECTS: creates a list that represents each profile
