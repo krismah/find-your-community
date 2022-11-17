@@ -21,24 +21,24 @@ import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 // Represents the graphical user interface
+// Partially inspired by CPSC 210 Traffic Light Lecture Lab
 public class GUI {
     private Account acc;
     private Profile user;
     private ProfileList userList;
     private ProfileList database;
-    private List<String> faculties;
     private static final String JSON_STORE = "./data/account.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final int HEIGHT = 5000;
-    private static final int WIDTH = 5000;
+    private static final int HEIGHT = 500;
+    private static final int WIDTH = 800;
     private JFrame frame;
     private JPanel saveAndLoad;
     private JList graphicalDatabase;
     private JPanel userGraphicalDatabase;
     private JList graphicalUserList;
     private JPanel userGraphicalUserList;
-    private JFrame confirmationFrame;
+    private JButton removeProfile;
 
     // EFFECTS: constructs the graphical user interface
     public GUI() {
@@ -52,9 +52,9 @@ public class GUI {
         initializeDatabase();
         initializeUserList();
 
-        frame.add(saveAndLoad, BorderLayout.SOUTH);
         frame.add(userGraphicalDatabase, BorderLayout.WEST);
         frame.add(userGraphicalUserList, BorderLayout.EAST);
+        frame.add(saveAndLoad, BorderLayout.SOUTH);
         frame.pack();
         frame.setVisible(true);
 
@@ -66,7 +66,7 @@ public class GUI {
         Profile sampleUser2 = new Profile("Karen", "Science", 33, "I love bacteria!");
         Profile sampleUser3 = new Profile("Nathan", "Arts", 49, "Howdy!");
         Profile sampleUser4 = new Profile("Marie", "Science", 99, "Chemistry-fanatic!");
-        Profile sampleUser5 = new Profile("Tyler", "Sauder School of Business", 49, "Money money money!");
+        Profile sampleUser5 = new Profile("Tyler", "Sauder School of Business", 49, "Business!");
         acc = new Account();
         database = acc.getDatabase();
         database.addProfile(sampleUser1);
@@ -113,9 +113,9 @@ public class GUI {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     if (graphicalDatabase.getSelectedIndex() == -1) {
-                        System.out.println("case 1");
+                        System.out.println("1");
                     } else {
-                        System.out.println("case 2");
+                        System.out.println("2");
                     }
                 }
             }
@@ -137,8 +137,8 @@ public class GUI {
             }
         });
 
-        JButton sortProfiles = new JButton("Sort Database by Route");
-        sortProfiles.addActionListener(new ActionListener() {
+        JButton sortDatabaseByRoute = new JButton("Sort Database by Route");
+        sortDatabaseByRoute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sortProfilesAction(database);
@@ -147,15 +147,16 @@ public class GUI {
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(addProfile);
-        buttonPanel.add(sortProfiles);
+        buttonPanel.add(sortDatabaseByRoute);
 
         userGraphicalDatabase = new JPanel(new BorderLayout());
         userGraphicalDatabase.add(databaseLabel, BorderLayout.NORTH);
         userGraphicalDatabase.add(graphicalDatabase, BorderLayout.CENTER);
         userGraphicalDatabase.add(buttonPanel, BorderLayout.SOUTH);
+        userGraphicalDatabase.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
-    // EFFECTS: initializes the graphical representation of userlist
+    // EFFECTS: initializes the graphical representation of userList
     private void initializeUserList() {
         DefaultListModel listModel = printProfiles(acc.getUserList());
 
@@ -165,9 +166,9 @@ public class GUI {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     if (graphicalUserList.getSelectedIndex() == -1) {
-                        System.out.println("case 1");
+                        removeProfile.setEnabled(false);
                     } else {
-                        System.out.println("case 2");
+                        removeProfile.setEnabled(true);
                     }
                 }
             }
@@ -181,7 +182,7 @@ public class GUI {
     // EFFECTS: creates buttons related to userList
     private void createUserListButtons() {
         JLabel userListLabel = new JLabel("Your List of Profiles");
-        JButton removeProfile = new JButton("Remove Profile");
+        removeProfile = new JButton("Remove Profile");
         removeProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -189,8 +190,8 @@ public class GUI {
             }
         });
 
-        JButton sortProfiles = new JButton("Sort List by Route");
-        sortProfiles.addActionListener(new ActionListener() {
+        JButton sortUserListByRoute = new JButton("Sort List by Route");
+        sortUserListByRoute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sortProfilesAction(userList);
@@ -199,12 +200,13 @@ public class GUI {
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(removeProfile);
-        buttonPanel.add(sortProfiles);
+        buttonPanel.add(sortUserListByRoute);
 
         userGraphicalUserList = new JPanel(new BorderLayout());
         userGraphicalUserList.add(userListLabel, BorderLayout.NORTH);
         userGraphicalUserList.add(graphicalUserList, BorderLayout.CENTER);
         userGraphicalUserList.add(buttonPanel, BorderLayout.SOUTH);
+        userGraphicalUserList.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     // EFFECTS: adds a given profile
@@ -327,7 +329,7 @@ public class GUI {
         String sep = System.getProperty("file.separator");
         ImageIcon checkmark = new ImageIcon(System.getProperty("user.dir") + sep + "data" + sep + "images"
                 + sep + "checkmark.png");
-        confirmationFrame = new JFrame();
+        JFrame confirmationFrame = new JFrame();
 
         JLabel label = new JLabel(checkmark);
         JLabel confirmation;

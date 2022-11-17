@@ -33,7 +33,6 @@ space for commuter students to find other commuter students!
 - You can load the state of my application by clicking the button labelled "Load the Application".
 
 ***Sources***
-- Teller App
-  https://github.students.cs.ubc.ca/CPSC210/TellerApp
-- JSON Demo
-https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+- Teller App : https://github.students.cs.ubc.ca/CPSC210/TellerApp
+- JSON Demo : https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+- C3 Lecture Lab - Traffic Light : https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter
