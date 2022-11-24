@@ -24,7 +24,7 @@ space for commuter students to find other commuter students!
 - As a user, I want to be able to save my profiles to file.
 - As a user, I want to be able to load my profiles from file.
 
-# Instructions for Grader
+## Instructions for Grader
 
 - You can generate the first required event related to adding Xs to a Y by selecting a profile from the database and clicking the button "Add to Your List".
 - You can generate the second required event related to adding Xs to a Y by clicking "Sort by Route" and following the instructions.
@@ -32,7 +32,22 @@ space for commuter students to find other commuter students!
 - You can save the state of my application by clicking the button labelled "Save the Application".
 - You can load the state of my application by clicking the button labelled "Load the Application".
 
+## Phase 4: Task 2
+Thu Nov 24 12:23:50 PST 2022 \
+Profile added! \
+Thu Nov 24 12:23:50 PST 2022\
+Profiles sorted by route. \
+Thu Nov 24 12:23:56 PST 2022\
+Profile removed.\
+Thu Nov 24 12:23:59 PST 2022\
+Profile added!\
+Thu Nov 24 12:23:59 PST 2022\
+Profile added!\
+Thu Nov 24 12:23:59 PST 2022\
+Profiles sorted by route.
+
 ***Sources***
 - Teller App : https://github.students.cs.ubc.ca/CPSC210/TellerApp
 - JSON Demo : https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 - C3 Lecture Lab - Traffic Light : https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter
+- Alarm System : https://github.students.cs.ubc.ca/CPSC210/AlarmSystem

@@ -1,6 +1,8 @@
 package ui.gui;
 
 import model.Account;
+import model.Event;
+import model.EventLog;
 import model.Profile;
 import model.ProfileList;
 import persistence.JsonReader;
@@ -11,8 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +44,15 @@ public class GUI {
     // EFFECTS: constructs the graphical user interface
     public GUI() {
         frame = new JFrame("Find Your Community!");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                EventLog log = EventLog.getInstance();
+                printLog(log);
+                System.exit(0);
+            }
+        });
         frame.setSize(WIDTH, HEIGHT);
         frame.setLayout(new BorderLayout());
 
@@ -347,5 +356,12 @@ public class GUI {
         confirmationFrame.add(panel);
         confirmationFrame.pack();
         confirmationFrame.setVisible(true);
+    }
+
+    // EFFECTS: prints the EventLog
+    private void printLog(EventLog log) {
+        for (Event event : log) {
+            System.out.println(event.toString());
+        }
     }
 }
