@@ -18,6 +18,7 @@ public class ProfileList {
     // EFFECTS: adds a given profile
     public void addProfile(Profile profile) {
         profiles.add(profile);
+        EventLog.getInstance().logEvent(new Event("Profile Added!"));
     }
 
     // REQUIRES: profile must exist in this
@@ -25,6 +26,7 @@ public class ProfileList {
     // EFFECTS: removes a profile
     public void removeProfile(Profile profile) {
         profiles.remove(profile);
+        EventLog.getInstance().logEvent(new Event("Profile Removed!"));
     }
 
     // EFFECTS: creates a new sorted list of profiles based on faculty
@@ -46,6 +48,7 @@ public class ProfileList {
                 sorted.addProfile(profile);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Profiles sorted by route!"));
         return sorted;
     }
 

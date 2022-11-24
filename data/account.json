@@ -1,10 +1,24 @@
 {
-     "userlist": [{
-          "route": 99,
-          "name": "Tim",
-          "message": "Hello!",
-          "faculty": "Land and Food Systems"
-     }],
+     "userlist": [
+          {
+               "route": 49,
+               "name": "Nathan",
+               "message": "Howdy!",
+               "faculty": "Arts"
+          },
+          {
+               "route": 99,
+               "name": "Tim",
+               "message": "Hello!",
+               "faculty": "Land and Food Systems"
+          },
+          {
+               "route": 49,
+               "name": "Tyler",
+               "message": "Business!",
+               "faculty": "Sauder School of Business"
+          }
+     ],
      "database": [
           {
                "route": 99,
