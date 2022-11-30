@@ -50,7 +50,7 @@ Profiles sorted by route.
 
 ## Phase 4: Task 3
 If I had more time, I would improve my project by refactoring the following:
-- Refactoring the GUI class to consist of a central GUI class that instantiates a number of different smaller GUI classes related to specific functionality of the GUI.
+- Refactoring the GUI class to consist of a central GUI class that instantiates a number of different smaller GUI classes related to specific functionality of the GUI. This results in decreased coupling and increased cohesion.
 - Refactor the ProfileList to consist of separate classes or methods related to separating the database from the user list. This would mostly be done to increase the description of the events logged in the event log.
 
 ***Sources***
