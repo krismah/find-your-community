@@ -279,8 +279,7 @@ public class GUI {
         DefaultListModel list = new DefaultListModel();
 
         for (Profile profile : profileList.getList()) {
-            list.addElement(profile.getName() + " || " + profile.getFaculty()
-                    + " || " + profile.getRoute() + " || " + profile.getMessage());
+            list.addElement(profile.toString());
         }
         return list;
     }

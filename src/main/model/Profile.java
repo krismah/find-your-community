@@ -35,6 +35,11 @@ public class Profile implements Writable {
     }
 
     @Override
+    public String toString() {
+        return name + "\n\t" + faculty + "\n\t" + route + "\n\t" + message;
+    }
+
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

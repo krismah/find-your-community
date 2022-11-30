@@ -2,21 +2,21 @@
      "userlist": [
           {
                "route": 99,
-               "name": "Tim",
-               "message": "Hello!",
-               "faculty": "Land and Food Systems"
+               "name": "Marie",
+               "message": "Chemistry-fanatic!",
+               "faculty": "Science"
+          },
+          {
+               "route": 33,
+               "name": "Karen",
+               "message": "I love bacteria!",
+               "faculty": "Science"
           },
           {
                "route": 49,
                "name": "Tyler",
                "message": "Business!",
                "faculty": "Sauder School of Business"
-          },
-          {
-               "route": 49,
-               "name": "Nathan",
-               "message": "Howdy!",
-               "faculty": "Arts"
           }
      ],
      "database": [
