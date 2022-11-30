@@ -18,7 +18,7 @@ public class ProfileList {
     // EFFECTS: adds a given profile
     public void addProfile(Profile profile) {
         profiles.add(profile);
-        EventLog.getInstance().logEvent(new Event("Profile added!"));
+        EventLog.getInstance().logEvent(new Event("Profile added to your list!"));
     }
 
     // REQUIRES: profile must exist in this
@@ -26,7 +26,7 @@ public class ProfileList {
     // EFFECTS: removes a profile
     public void removeProfile(Profile profile) {
         profiles.remove(profile);
-        EventLog.getInstance().logEvent(new Event("Profile removed."));
+        EventLog.getInstance().logEvent(new Event("Profile removed from your list."));
     }
 
     // EFFECTS: creates a new sorted list of profiles based on faculty

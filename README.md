@@ -33,18 +33,25 @@ space for commuter students to find other commuter students!
 - You can load the state of my application by clicking the button labelled "Load the Application".
 
 ## Phase 4: Task 2
-Thu Nov 24 12:23:50 PST 2022 \
-Profile added! \
-Thu Nov 24 12:23:50 PST 2022\
-Profiles sorted by route. \
-Thu Nov 24 12:23:56 PST 2022\
-Profile removed.\
-Thu Nov 24 12:23:59 PST 2022\
-Profile added!\
-Thu Nov 24 12:23:59 PST 2022\
-Profile added!\
-Thu Nov 24 12:23:59 PST 2022\
+Tue Nov 29 21:12:31 PST 2022\
+Profile added to your list!
+
+Tue Nov 29 21:12:33 PST 2022\
+Profile added to your list!
+
+Tue Nov 29 21:12:36 PST 2022\
+Profile removed from your list.
+
+Tue Nov 29 21:12:39 PST 2022\
+Profile added to your list!
+
+Tue Nov 29 21:12:39 PST 2022\
 Profiles sorted by route.
+
+## Phase 4: Task 3
+If I had more time, I would improve my project by refactoring the following:
+- Refactoring the GUI class to consist of a central GUI class that instantiates a number of different smaller GUI classes related to specific functionality of the GUI.
+- Refactor the ProfileList to consist of separate classes or methods related to separating the database from the user list. This would mostly be done to increase the description of the events logged in the event log.
 
 ***Sources***
 - Teller App : https://github.students.cs.ubc.ca/CPSC210/TellerApp

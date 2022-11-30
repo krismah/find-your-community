@@ -16,10 +16,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 // Represents the graphical user interface
 // Partially inspired by CPSC 210 Traffic Light Lecture Lab
@@ -121,11 +119,7 @@ public class GUI {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
-                    if (graphicalDatabase.getSelectedIndex() == -1) {
-                        System.out.println("1");
-                    } else {
-                        System.out.println("2");
-                    }
+                    return;
                 }
             }
         });

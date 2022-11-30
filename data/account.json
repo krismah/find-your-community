@@ -1,12 +1,6 @@
 {
      "userlist": [
           {
-               "route": 49,
-               "name": "Nathan",
-               "message": "Howdy!",
-               "faculty": "Arts"
-          },
-          {
                "route": 99,
                "name": "Tim",
                "message": "Hello!",
@@ -17,6 +11,12 @@
                "name": "Tyler",
                "message": "Business!",
                "faculty": "Sauder School of Business"
+          },
+          {
+               "route": 49,
+               "name": "Nathan",
+               "message": "Howdy!",
+               "faculty": "Arts"
           }
      ],
      "database": [
