@@ -3,6 +3,7 @@
     "faculty": "Science",
     "route": 33,
     "message": "I love bacteria!",
+    "profilecreated": false,
 
   "userlist":[
     {

@@ -3,6 +3,7 @@
     "faculty": "Science",
     "route": 99,
     "message": "Initial Message",
+    "profilecreated": false,
   "userlist": [],
   "database": []
 }
