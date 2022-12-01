@@ -2,6 +2,7 @@
      "userlist": [],
      "database": [],
      "route": 99,
+     "profilecreated": false,
      "name": "Initial",
      "message": "Initial Message",
      "faculty": "Science"

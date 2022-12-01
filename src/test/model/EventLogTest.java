@@ -64,7 +64,7 @@ public class EventLogTest {
     void testAddProfileEventLog() {
         profileList.addProfile(profile);
 
-        Event profileEvent = new Event("Profile added!");
+        Event profileEvent = new Event(profile.getName() + " was added to your list! \n");
         EventLog log = EventLog.getInstance();
         List<Event> list = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class EventLogTest {
             list.add(event);
         }
 
-        assertEquals("Profile added!", list.get(1).getDescription());
+        assertEquals(profile.getName() + " was added to your list! \n", list.get(1).getDescription());
         assertEquals(2, list.size());
         assertTrue(list.contains(profileEvent));
     }
@@ -82,8 +82,8 @@ public class EventLogTest {
         profileList.addProfile(profile);
         profileList.removeProfile(profile);
 
-        Event addedEvent = new Event("Profile added!");
-        Event removedEvent = new Event("Profile removed.");
+        Event addedEvent = new Event(profile.getName() + " was added to your list! \n");
+        Event removedEvent = new Event(profile.getName() + " was removed from your list. \n");
         EventLog log = EventLog.getInstance();
         List<Event> list = new ArrayList<>();
 
@@ -91,9 +91,9 @@ public class EventLogTest {
             list.add(event);
         }
 
-        assertEquals("Profile added!", list.get(1).getDescription());
+        assertEquals(profile.getName() + " was added to your list! \n", list.get(1).getDescription());
         assertTrue(list.contains(addedEvent));
-        assertEquals("Profile removed.", list.get(2).getDescription());
+        assertEquals(profile.getName() + " was removed from your list. \n", list.get(2).getDescription());
         assertTrue(list.contains(removedEvent));
         assertEquals(3, list.size());
     }
@@ -102,7 +102,7 @@ public class EventLogTest {
     void testSortProfilesByRouteEventLog() {
         profileList.sortProfileByRoute(99);
 
-        Event sortedEvent = new Event("Profiles sorted by route.");
+        Event sortedEvent = new Event("Profiles sorted by route. \n");
         EventLog log = EventLog.getInstance();
         List<Event> list = new ArrayList<>();
 
@@ -110,7 +110,7 @@ public class EventLogTest {
             list.add(event);
         }
 
-        assertEquals("Profiles sorted by route.", list.get(1).getDescription());
+        assertEquals("Profiles sorted by route. \n", list.get(1).getDescription());
         assertTrue(list.contains(sortedEvent));
         assertEquals(2, list.size());
     }

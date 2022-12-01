@@ -21,4 +21,9 @@ public class ProfileTest {
         assertEquals(99, testProfile.getRoute());
         assertEquals("Hello!", testProfile.getMessage());
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Amy" + "\n\t" + "Science" + "\n\t" + 99 + "\n\t" + "Hello!", testProfile.toString());
+    }
 }

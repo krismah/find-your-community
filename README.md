@@ -33,25 +33,30 @@ space for commuter students to find other commuter students!
 - You can load the state of my application by clicking the button labelled "Load the Application".
 
 ## Phase 4: Task 2
-Tue Nov 29 21:12:31 PST 2022\
-Profile added to your list!
+Wed Nov 30 21:57:15 PST 2022\
+Marie was added to your list!
 
-Tue Nov 29 21:12:33 PST 2022\
-Profile added to your list!
+Wed Nov 30 21:57:15 PST 2022\
+Tyler was added to your list!
 
-Tue Nov 29 21:12:36 PST 2022\
-Profile removed from your list.
+Wed Nov 30 21:57:18 PST 2022\
+Tyler was added to your list!
 
-Tue Nov 29 21:12:39 PST 2022\
-Profile added to your list!
+Wed Nov 30 21:57:19 PST 2022\
+Nathan was added to your list!
 
-Tue Nov 29 21:12:39 PST 2022\
+Wed Nov 30 21:57:20 PST 2022\
+Tyler was removed from your list.
+
+Wed Nov 30 21:57:22 PST 2022\
 Profiles sorted by route.
+
+Note: more actions appear in the log once printed to the console due how the GUI is instantiated. In essence, in order to add some profiles to the database when the program begins, the method that adds the profiles also logs the events and thus adds these initial events to the log.
 
 ## Phase 4: Task 3
 If I had more time, I would improve my project by refactoring the following:
 - Refactoring the GUI class to consist of a central GUI class that instantiates a number of different smaller GUI classes related to specific functionality of the GUI. This results in decreased coupling and increased cohesion.
-- Refactor the ProfileList to consist of separate classes or methods related to separating the database from the user list. This would mostly be done to increase the description of the events logged in the event log.
+
 
 ***Sources***
 - Teller App : https://github.students.cs.ubc.ca/CPSC210/TellerApp

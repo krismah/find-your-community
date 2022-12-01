@@ -20,6 +20,7 @@
           }
      ],
      "route": 99,
+     "profilecreated": false,
      "name": "Kris",
      "message": "Hello there!",
      "faculty": "Science"
