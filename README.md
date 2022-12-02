@@ -51,7 +51,7 @@ Tyler was removed from your list.
 Wed Nov 30 21:57:22 PST 2022\
 Profiles sorted by route.
 
-Note: more actions appear in the log once printed to the console due how the GUI is instantiated. In essence, in order to add some profiles to the database when the program begins, the method that adds the profiles also logs the events and thus adds these initial events to the log.
+Note: more actions appear in the log once printed to the console due how the GUI is instantiated. In essence, in order to add some profiles to the database when the program begins, the method that adds the profiles also logs the events and thus adds these initial events to the log despite them technically not being called by the user.
 
 ## Phase 4: Task 3
 If I had more time, I would improve my project by refactoring the following:
