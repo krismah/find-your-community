@@ -26,8 +26,8 @@ space for commuter students to find other commuter students!
 
 ## Instructions for Grader
 
-- You can generate the first required event related to adding Xs to a Y by selecting a profile from the database and clicking the button "Add to Your List".
-- You can generate the second required event related to adding Xs to a Y by clicking "Sort by Route" and following the instructions.
+- You can generate the first required event related to adding Xs to a Y by selecting a profile from the database and clicking the button "Add Profile to Your List".
+- You can generate the second required event related to adding Xs to a Y by clicking "Sort List by Route" and following the instructions.
 - You can locate my visual component by clicking either button related to saving/loading the application.
 - You can save the state of my application by clicking the button labelled "Save the Application".
 - You can load the state of my application by clicking the button labelled "Load the Application".
