@@ -1,4 +1,4 @@
-# My Personal Project
+# Find Your Community!
 ***Find your commuter friends on campus!***
 
 This application will allow commuter students on campus to find their community through the creation of a profile,
@@ -23,40 +23,6 @@ space for commuter students to find other commuter students!
 - As a user, I want to be able to remove a profile from my list of profiles.
 - As a user, I want to be able to save my profiles to file.
 - As a user, I want to be able to load my profiles from file.
-
-## Instructions for Grader
-
-- You can generate the first required event related to adding Xs to a Y by selecting a profile from the database and clicking the button "Add Profile to Your List".
-- You can generate the second required event related to adding Xs to a Y by clicking "Sort List by Route" and following the instructions.
-- You can locate my visual component by clicking either button related to saving/loading the application.
-- You can save the state of my application by clicking the button labelled "Save the Application".
-- You can load the state of my application by clicking the button labelled "Load the Application".
-
-## Phase 4: Task 2
-Wed Nov 30 21:57:15 PST 2022\
-Marie was added to your list!
-
-Wed Nov 30 21:57:15 PST 2022\
-Tyler was added to your list!
-
-Wed Nov 30 21:57:18 PST 2022\
-Tyler was added to your list!
-
-Wed Nov 30 21:57:19 PST 2022\
-Nathan was added to your list!
-
-Wed Nov 30 21:57:20 PST 2022\
-Tyler was removed from your list.
-
-Wed Nov 30 21:57:22 PST 2022\
-Profiles sorted by route.
-
-Note: more actions appear in the log once printed to the console due how the GUI is instantiated. In essence, in order to add some profiles to the database when the program begins, the method that adds the profiles also logs the events and thus adds these initial events to the log despite them technically not being called by the user.
-
-## Phase 4: Task 3
-If I had more time, I would improve my project by refactoring the following:
-- Refactoring the GUI class to consist of a central GUI class that instantiates a number of different smaller GUI classes related to specific functions of the GUI. This refactoring would result in decreased coupling and increased cohesion.
-
 
 ***Sources***
 - Teller App : https://github.students.cs.ubc.ca/CPSC210/TellerApp
